@@ -1,9 +1,9 @@
 "use client";
 
-import { Play, Square, Sun, Moon } from "lucide-react";
+import { Play, Square, Sun, Moon, Disc } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 
-export default function Component() {
+export default function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [offset, setOffset] = useState(0);
@@ -19,8 +19,8 @@ export default function Component() {
   }, []);
 
   useEffect(() => {
-    let animationFrameId: number;
-    const animate = (time: number) => {
+    let animationFrameId;
+    const animate = (time) => {
       setOffset((time / 50) % 1000);
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -102,23 +102,32 @@ export default function Component() {
         )}
       </button>
       <div className="z-10 flex flex-col items-center max-w-md w-full px-4 sm:px-0">
-        <button
-          onClick={handlePlayStop}
-          className={`relative inline-flex items-center justify-center rounded-full p-8 sm:p-12 md:p-16 lg:p-20 transition-all duration-300 ease-in-out hover:bg-opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 active:scale-95 ${
-            isDarkTheme
-              ? "bg-white bg-opacity-15 text-white focus-visible:ring-white"
-              : "bg-gray-800 bg-opacity-15 text-gray-800 focus-visible:ring-gray-800"
-          }`}
-          aria-label={isPlaying ? "Stop" : "Play"}
-        >
-          {isPlaying ? (
-            <Square className="h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-20" />
-          ) : (
-            <Play className="h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-20" />
+        <div className="relative">
+          <button
+            onClick={handlePlayStop}
+            className={`relative inline-flex items-center justify-center rounded-full p-8 sm:p-12 md:p-16 lg:p-20 transition-all duration-300 ease-in-out hover:bg-opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 active:scale-95 ${
+              isDarkTheme
+                ? "bg-white bg-opacity-15 text-white focus-visible:ring-white"
+                : "bg-gray-800 bg-opacity-15 text-gray-800 focus-visible:ring-gray-800"
+            }`}
+            aria-label={isPlaying ? "Stop" : "Play"}
+          >
+            {isPlaying ? (
+              <Square className="h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-20" />
+            ) : (
+              <Play className="h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-20" />
+            )}
+          </button>
+          {isPlaying && (
+            <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 flex items-center bg-red-600 text-white text-xs sm:text-sm font-bold px-2 py-1 rounded-full">
+              <span className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-full mr-1 animate-pulse"></span>
+              LIVE
+            </div>
           )}
-        </button>
-        <h2 className="mt-4 sm:mt-6 md:mt-8 text-lg sm:text-xl md:text-2xl font-semibold">
-          Song name.
+        </div>
+        <h2 className="mt-4 sm:mt-6 md:mt-8 text-lg sm:text-xl md:text-2xl font-semibold flex items-center">
+          <Disc className={`mr-2 ${isPlaying ? "animate-spin" : ""}`} />
+          Under development :/
         </h2>
       </div>
       <div className="absolute bottom-2 sm:bottom-4 text-xs sm:text-sm text-opacity-80">
