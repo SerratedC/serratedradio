@@ -16,7 +16,7 @@ export default function App() {
         audioRef.current.pause();
         setIsPlaying(false);
       } else {
-        audioRef.current.src = "https://garnet-soapy-judo.glitch.me/stream"; // Replace with your Glitch project URL
+        audioRef.current.src = "https://stream.zeno.fm/webwif7ikrzuv"; // Replace with your Glitch project URL
         audioRef.current.play();
         setIsPlaying(true);
       }
