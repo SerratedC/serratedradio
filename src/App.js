@@ -18,17 +18,13 @@ export default function App() {
       } else {
         audioRef.current.src = "https://garnet-soapy-judo.glitch.me/stream"; // Replace with your Glitch project URL
         audioRef.current.play();
+        setIsPlaying(true);
       }
     }
   };
 
   const toggleTheme = useCallback(() => {
     setIsDarkTheme((prev) => !prev);
-  }, []);
-
-  const handlePlayStop = useCallback(() => {
-    setIsPlaying((prev) => !prev);
-    toggleStream();
   }, []);
 
   useEffect(() => {
