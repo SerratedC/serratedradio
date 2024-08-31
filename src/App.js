@@ -1,7 +1,7 @@
 "use client";
 
 import { Play, Square, Sun, Moon, Disc } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 export default function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
