@@ -4,7 +4,7 @@ import { Play, Square, Sun, Moon, Disc } from "lucide-react";
 import { useState, useEffect, useCallback, useRef } from "react";
 
 export default function App() {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [offset, setOffset] = useState(0);
 
