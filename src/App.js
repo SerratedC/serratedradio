@@ -113,7 +113,7 @@ export default function App() {
       <div className="z-10 flex flex-col items-center max-w-md w-full px-4 sm:px-0">
         <div className="relative">
           <button
-            onClick={handlePlayStop}
+            onClick={toggleStream}
             className={`relative inline-flex items-center justify-center rounded-full p-8 sm:p-12 md:p-16 lg:p-20 transition-all duration-300 ease-in-out hover:bg-opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 active:scale-95 ${
               isDarkTheme
                 ? "bg-white bg-opacity-15 text-white focus-visible:ring-white"
