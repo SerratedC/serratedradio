@@ -8,14 +8,27 @@ export default function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [offset, setOffset] = useState(0);
 
+  const audioRef = useRef(null);
+
+  const toggleStream = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.src = "https://garnet-soapy-judo.glitch.me/stream"; // Replace with your Glitch project URL
+        audioRef.current.play();
+      }
+    }
+  };
+
   const toggleTheme = useCallback(() => {
     setIsDarkTheme((prev) => !prev);
   }, []);
 
   const handlePlayStop = useCallback(() => {
     setIsPlaying((prev) => !prev);
-    // This is where you'll call your function, e.g.:
-    // handlePlayStopFunction(!isPlaying)
+    toggleStream();
   }, []);
 
   useEffect(() => {
@@ -118,6 +131,7 @@ export default function App() {
               <Play className="h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-20" />
             )}
           </button>
+          <audio ref={audioRef} />
           {isPlaying && (
             <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 flex items-center bg-red-600 text-white text-xs sm:text-sm font-bold px-2 py-1 rounded-full">
               <span className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-full mr-1 animate-pulse"></span>
