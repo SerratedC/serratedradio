@@ -137,7 +137,7 @@ export default function App() {
         </div>
         <h2 className="mt-4 sm:mt-6 md:mt-8 text-lg sm:text-xl md:text-2xl font-semibold flex items-center">
           <Disc className={`mr-2 ${isPlaying ? "animate-spin" : ""}`} />
-          Under development :/
+          That Band - Kessoku Band
         </h2>
       </div>
       <div className="absolute bottom-2 sm:bottom-4 text-xs sm:text-sm text-opacity-80">
